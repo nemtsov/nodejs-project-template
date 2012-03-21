@@ -1,0 +1,10 @@
+{
+    "name": "nodejs-project-template"
+  , "version": "1.0.0"
+  , "description": "Template project"
+  , "author": "Yuriy Nemtsov <nemtsov@gmail.com>"
+  , "devDependencies": {
+        "mocha": ">= 0.14.1"
+      , "dox": ">= 0.2.0"
+    }
+}
