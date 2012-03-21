@@ -1,8 +1,8 @@
 Node.js Project Template
 ========================
 
-_Includes_
+__Includes__
 
-- _mocha_ Unit testing framework
-- _jscoverage_Test coverage library
-- _dox_ JSDoc-based documentation generator
+- __mocha__ unit testing framework
+- __jscoverage__ test coverage library
+- __dox__ JSDoc-based documentation generator
