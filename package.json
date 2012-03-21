@@ -5,6 +5,7 @@
   , "author": "Yuriy Nemtsov <nemtsov@gmail.com>"
   , "devDependencies": {
         "mocha": ">= 0.14.1"
+      , "should": ">= 0.6.0"
       , "dox": ">= 0.2.0"
     }
 }
