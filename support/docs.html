@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Template Documentation</title>
+
+<style type="text/css">
+/*
+ * Derived from wombat & 
+.str { color: #9bbf7d; }
+.kwd { color: #c7df89; }
+.com { color: #99968b; }
+.typ { color: #94c5e8; }
+.lit { color: #d77a71; }
+.pun { color: #d6d5d1; }
+.pln { color: #d6d5d1; }
+.tag { color: #8AC763; }
+.atn { color: #E0E2E4; }
+.atv { color: #EC7600; }
+.dec { color: purple; }
+pre.prettyprint { border: 0px solid #888; }
+ol.linenums { margin-top: 0; margin-bottom: 0; }
+.prettyprint { background: #333; }
+li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8, li.L9 {
+  color: #555;
+}
+li.L1, li.L3, li.L5, li.L7, li.L9 {
+  background: #111;
+}
+@media print {
+  .str { color: #060; }
+  .kwd { color: #006; font-weight: bold; }
+  .com { color: #600; font-style: italic; }
+  .typ { color: #404; font-weight: bold; }
+  .lit { color: #044; }
+  .pun { color: #440; }
+  .pln { color: #000; }
+  .tag { color: #006; font-weight: bold; }
+  .atn { color: #404; }
+  .atv { color: #060; }
+}
+ */
+
+/* Pretty printing styles. Used with prettify.js. */
+
+/* SPAN elements with the classes below are added by prettyprint. */
+.pln { color: #000 }  /* plain text */
+
+@media screen {
+  .str { color: #3b9826 }  /* string content */
+  .kwd { color: #255d94 }  /* a keyword */
+  .com { color: #aaa }  /* a comment */
+  .typ { color: #97267c }  /* a type name */
+  .lit { color: #a82a35 }  /* a literal value */
+  /* punctuation, lisp open bracket, lisp close bracket */
+  .pun, .opn, .clo { color: #555 }
+  .tag { color: #008 }  /* a markup tag name */
+  .atn { color: #606 }  /* a markup attribute name */
+  .atv { color: #080 }  /* a markup attribute value */
+  .dec, .var { color: #606 }  /* a declaration; a variable name */
+  .fun { color: red }  /* a function name */
+}
+
+/* Use higher contrast and text-weight for printable form. */
+@media print, projection {
+  .str { color: #3b9826 }
+  .kwd { color: #255d94; font-weight: bold }
+  .com { color: #aaa; font-style: italic }
+  .typ { color: #97267c; font-weight: bold }
+  .lit { color: #a82a35 }
+  .pun, .opn, .clo { color: #440 }
+  .tag { color: #006; font-weight: bold }
+  .atn { color: #404 }
+  .atv { color: #060 }
+}
+
+/* Put a border around prettyprinted code snippets. */
+pre.prettyprint { padding: 2px; border: 1px solid #888 }
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums { margin-top: 0; margin-bottom: 0 } /* IE indents via margin-left */
+li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 { list-style-type: none }
+/* Alternate shading for lines */
+li.L1, li.L3, li.L5, li.L7, li.L9 { background: #eee } 
+
+
+/* ------------- */
+  body {
+    padding: 50px;
+    font: 14px/1.6 "Helvetica Neue", Helvetica, sans-serif;
+  }
+
+  h1 { color: #444; margin: 0; font-size: 60px; }
+  h2 { margin-bottom: 0; font-weight: 200; }
+  h3 { font-weight: bold; margin-bottom: 0; }
+  a { color: #4183C4; }
+
+  ul, pre, p { margin-top: 0.3em; }
+
+  code.source {
+    width: auto;
+    display: inline-block;
+    border: 0;
+    border-radius: 4px;
+    padding: 15px;
+    font: 13px Monaco, monospace;
+    color: #d6d5d1;
+    background-color: #fcfcfc;
+
+    border: 1px solid #DDD;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+  }
+
+  .tags em { font-weight: bold; font-style: normal; }
+
+  #menu { position: fixed; top: 10px; right: 30px; }
+  #menu li { list-style: none; }
+
+  #menu li a {
+    display: block;
+    text-decoration: none;
+    padding: 5px 2px;
+    border-bottom: 1px dotted #eee;
+    text-align: right;
+    -webkit-transition: padding 200ms ease-out;
+    -moz-transition: padding 200ms ease-out;
+  }
+
+  #menu li a:hover { padding-right: 15px; }
+
+  code .comment { color: #a2a2a2 }
+  code .init { color: #2F6FAD }
+  code .string { color: #5890AD }
+  code .keyword { color: #8A6343 }
+  code .number { color: #2F6FAD }
+</style>
+</head>
+<body>
+
+<section id="content">
+  <h1>Template</h1>
+
+  {{#comments}}
+  <section id="{{id}}" class="comment">
+    <h2>{{title}}</h2>
+
+    <section class="description">
+      {{& description.full}}
+    </section>
+
+    {{#hasTags}}
+    <ul class="tags">
+      {{#tags}}
+      {{^isApi}}
+      <li>
+        {{#hasTypes}}
+          {{#isParam}}
+          <em><strong>{{combinedTypes}}</strong></em>
+          {{/isParam}}
+
+          {{#isReturn}}
+          <span>returns</span>
+          <em><strong>{{combinedTypes}}</strong></em>
+          {{/isReturn}}
+        {{/hasTypes}}
+        <span>{{name}}</span>
+        <span>{{description}}</span>
+      </li>
+      {{/isApi}}
+      {{/tags}}
+    </ul>
+    {{/hasTags}}
+
+    <h3>Source</h3>
+    <pre><code class="source prettyprint lang-js">{{code}}</code></pre>
+  </section>
+  {{/comments}}
+</section>
+
+<ul id="menu">
+  {{#comments}}
+  {{#title}}
+  <li><a href="#{{id}}">{{title}}</a></li>
+  {{/title}}
+  {{/comments}}
+</ul>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/prettify/188.0.0/prettify.js"></script>
+<script>
+(function () {
+
+function prettyPrepareCode() {
+  if (!document.querySelectorAll) { return; }
+  var nodes = document.querySelectorAll('pre code');
+  for (var i = 0, l = nodes.length; i < l; i++) {
+    nodes[i].className = 'source prettyprint lang-js';
+  }
+}
+
+prettyPrepareCode();
+prettyPrint();
+
+}())
+</script>
+</body>
+</html>
