@@ -5,84 +5,47 @@
 <title>Template Documentation</title>
 
 <style type="text/css">
-/*
- * Derived from wombat & 
-.str { color: #9bbf7d; }
-.kwd { color: #c7df89; }
-.com { color: #99968b; }
-.typ { color: #94c5e8; }
-.lit { color: #d77a71; }
-.pun { color: #d6d5d1; }
-.pln { color: #d6d5d1; }
-.tag { color: #8AC763; }
-.atn { color: #E0E2E4; }
-.atv { color: #EC7600; }
-.dec { color: purple; }
-pre.prettyprint { border: 0px solid #888; }
-ol.linenums { margin-top: 0; margin-bottom: 0; }
-.prettyprint { background: #333; }
-li.L0, li.L1, li.L2, li.L3, li.L4, li.L5, li.L6, li.L7, li.L8, li.L9 {
-  color: #555;
-}
-li.L1, li.L3, li.L5, li.L7, li.L9 {
-  background: #111;
-}
-@media print {
-  .str { color: #060; }
-  .kwd { color: #006; font-weight: bold; }
-  .com { color: #600; font-style: italic; }
-  .typ { color: #404; font-weight: bold; }
-  .lit { color: #044; }
-  .pun { color: #440; }
-  .pln { color: #000; }
-  .tag { color: #006; font-weight: bold; }
-  .atn { color: #404; }
-  .atv { color: #060; }
-}
- */
+  /******************************
+    Github-like colorscheme
+  ******************************/
+  .pln { color: #000 }  /* plain text */
 
-/* Pretty printing styles. Used with prettify.js. */
+  @media screen {
+    .str { color: #D14 }  /* string content */
+    .kwd { color: #000; font-weight: bold; }  /* a keyword */
+    .com { color: #998 }  /* a comment */
+    .typ { color: #099 }  /* a type name */
+    .lit { color: #099 }  /* a literal value */
+    /* punctuation, lisp open bracket, lisp close bracket */
+    .pun, .opn, .clo { color: #555 }
+    .tag { color: #008 }  /* a markup tag name */
+    .atn { color: #606 }  /* a markup attribute name */
+    .atv { color: #080 }  /* a markup attribute value */
+    .dec, .var { color: #606 }  /* a declaration; a variable name */
+    .fun { color: red }  /* a function name */
+  }
 
-/* SPAN elements with the classes below are added by prettyprint. */
-.pln { color: #000 }  /* plain text */
+  /* Use higher contrast and text-weight for printable form. */
+  @media print, projection {
+    .str { color: #D14 }
+    .kwd { color: #000; font-weight: bold }
+    .com { color: #a998aa; font-style: italic }
+    .typ { color: #099; font-weight: bold }
+    .lit { color: #099 }
+    .pun, .opn, .clo { color: #440 }
+    .tag { color: #006; font-weight: bold }
+    .atn { color: #404 }
+    .atv { color: #060 }
+  }
 
-@media screen {
-  .str { color: #3b9826 }  /* string content */
-  .kwd { color: #255d94 }  /* a keyword */
-  .com { color: #aaa }  /* a comment */
-  .typ { color: #97267c }  /* a type name */
-  .lit { color: #a82a35 }  /* a literal value */
-  /* punctuation, lisp open bracket, lisp close bracket */
-  .pun, .opn, .clo { color: #555 }
-  .tag { color: #008 }  /* a markup tag name */
-  .atn { color: #606 }  /* a markup attribute name */
-  .atv { color: #080 }  /* a markup attribute value */
-  .dec, .var { color: #606 }  /* a declaration; a variable name */
-  .fun { color: red }  /* a function name */
-}
+  /* Put a border around prettyprinted code snippets. */
+  pre.prettyprint { padding: 2px; border: 1px solid #888 }
 
-/* Use higher contrast and text-weight for printable form. */
-@media print, projection {
-  .str { color: #3b9826 }
-  .kwd { color: #255d94; font-weight: bold }
-  .com { color: #aaa; font-style: italic }
-  .typ { color: #97267c; font-weight: bold }
-  .lit { color: #a82a35 }
-  .pun, .opn, .clo { color: #440 }
-  .tag { color: #006; font-weight: bold }
-  .atn { color: #404 }
-  .atv { color: #060 }
-}
-
-/* Put a border around prettyprinted code snippets. */
-pre.prettyprint { padding: 2px; border: 1px solid #888 }
-
-/* Specify class=linenums on a pre to get line numbering */
-ol.linenums { margin-top: 0; margin-bottom: 0 } /* IE indents via margin-left */
-li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 { list-style-type: none }
-/* Alternate shading for lines */
-li.L1, li.L3, li.L5, li.L7, li.L9 { background: #eee } 
-
+  /* Specify class=linenums on a pre to get line numbering */
+  ol.linenums { margin-top: 0; margin-bottom: 0 } /* IE indents via margin-left */
+  li.L0, li.L1, li.L2, li.L3, li.L5, li.L6, li.L7, li.L8 { list-style-type: none }
+  /* Alternate shading for lines */
+  li.L1, li.L3, li.L5, li.L7, li.L9 { background: #eee } 
 
 /* ------------- */
   body {
@@ -90,36 +53,45 @@ li.L1, li.L3, li.L5, li.L7, li.L9 { background: #eee }
     font: 14px/1.6 "Helvetica Neue", Helvetica, sans-serif;
   }
 
-  h1 { color: #444; margin: 0; font-size: 60px; }
+  h1, h2, h3 { color: #444; }
+
+  h1 { margin: 0; font-size: 60px; }
   h2 { margin-bottom: 0; font-weight: 200; }
   h3 { font-weight: bold; margin-bottom: 0; }
   a { color: #4183C4; }
 
   ul, pre, p { margin-top: 0.3em; }
 
+  .comment { border-bottom: 1px dotted #ddd; padding-bottom: 15px; }
+  .comment h2.title { font-weight: bold; }
+  .comment h3.source { color: #888; font-weight: normal; }
+  .comment.private { opacity: 0.6; }
+  .comment em.private { color: #D14; }
+
   code.source {
     width: auto;
     display: inline-block;
     border: 0;
     border-radius: 4px;
-    padding: 15px;
-    font: 13px Monaco, monospace;
-    color: #d6d5d1;
-    background-color: #fcfcfc;
-
-    border: 1px solid #DDD;
--webkit-border-radius: 4px;
--moz-border-radius: 4px;
-border-radius: 4px;
--webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
--moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+    padding: 20px;
+    xfont: 13px Monaco, monospace;
+    font: 13px 'Bitstream Vera Sans Mono','Courier', monospace;
+    color: black;
+    background-color: #fff;
+    border: 1px solid #eee;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
   }
 
   .tags em { font-weight: bold; font-style: normal; }
 
-  #menu { position: fixed; top: 10px; right: 30px; }
+  #menu { background-color: white; position: fixed; top: 10px; right: 30px; }
   #menu li { list-style: none; }
+  #menu li.private { opacity: 0.6; }
 
   #menu li a {
     display: block;
@@ -132,12 +104,6 @@ box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
   }
 
   #menu li a:hover { padding-right: 15px; }
-
-  code .comment { color: #a2a2a2 }
-  code .init { color: #2F6FAD }
-  code .string { color: #5890AD }
-  code .keyword { color: #8A6343 }
-  code .number { color: #2F6FAD }
 </style>
 </head>
 <body>
@@ -146,8 +112,15 @@ box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
   <h1>Template</h1>
 
   {{#comments}}
-  <section id="{{id}}" class="comment">
-    <h2>{{title}}</h2>
+  <section id="{{id}}" class="comment {{#isPrivate}}private{{/isPrivate}}">
+    <h2 class="title">
+      {{title}}
+    </h2>
+
+    {{#isPrivate}}
+    <em class="private">private</em>
+    {{/isPrivate}}
+
 
     <section class="description">
       {{& description.full}}
@@ -176,7 +149,7 @@ box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
     </ul>
     {{/hasTags}}
 
-    <h3>Source</h3>
+    <h3 class="source">Source</h3>
     <pre><code class="source prettyprint lang-js">{{code}}</code></pre>
   </section>
   {{/comments}}
@@ -185,7 +158,7 @@ box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075);
 <ul id="menu">
   {{#comments}}
   {{#title}}
-  <li><a href="#{{id}}">{{title}}</a></li>
+  <li class="{{#isPrivate}}private{{/isPrivate}}"><a href="#{{id}}">{{title}}</a></li>
   {{/title}}
   {{/comments}}
 </ul>

@@ -115,6 +115,11 @@ DoxRunner.prototype.renderDoc = function (doc) {
       if ('string' !== typeof tag.description) {
         tag.description = '';
       }
+
+      comment.isPrivate = false;
+      if (tag.isApi && ('private' === tag.visibility)) {
+        comment.isPrivate = true;
+      }
     });
 
     return comment;
